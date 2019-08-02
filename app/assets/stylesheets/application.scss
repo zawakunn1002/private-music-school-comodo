@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ body {
+ 	font-family: 'Yu Mincho';
+ }
+
+ header {
+ 	background-color: white;
+ }
+
+ .header-title {
+ 	text-align: center;
+ }
+
+ .btn-header {
+ 	color: white;
+ 	width: 100%;
+ 	display: block;
+ 	text-align: center;
+ 	font-size: 20px;
+ 	line-height:40px;
+ 	text-decoration: none;
+ }
+
+ .btn-header:hover {
+ 	cursor: hand;
+ 	font-size: 25px;
+ 	color: white;
+ }
+
+.footer-title {
+	text-align: right;
+}
