@@ -1,0 +1,70 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;">お疲れ様です。</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h4 style="margin: 20px 0;">下記のボタンから行う作業を選択してください</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-4">
+			<div class="d-flex justify-content-center">
+				<%= link_to "お知らせを配信する", new_notice_path, class: "btn btn-success" %>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="d-flex justify-content-center">
+				<%= link_to "生徒さんの一覧を確認する", users_path, class: "btn btn-success" %>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="d-flex justify-content-center">
+				<%= link_to "講師の情報を編集する", edit_admin_path(1), class: "btn btn-success" %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;">過去のお知らせ一覧</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-10 offset-lg-1 col-12">
+			<div class="d-flex justify-content-center">
+				<table class="table table-hover table-inverse">
+					<colgroup span="1" style="width:40%;">
+					<colgroup span="1" style="width:20%;">
+					<colgroup span="1" style="width:20%;">
+					<colgroup span="1" style="width:20%">
+					<thead>
+						<tr>
+							<th> お知らせタイトル</th>
+							<th> お知らせ配信日時</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @notices.each do |notice| %>
+							<tr>
+								<td><%= link_to notice.notice_title, notice_path(notice.id) %></td>
+								<td><%= notice.created_at.strftime("%Y") %>年<%= notice.created_at.strftime("%m") %>月<%= notice.created_at.strftime("%d") %>日</td>
+								<td><%= link_to "お知らせの内容を編集する", edit_notice_path(notice.id) %></td>
+								<td><%= link_to "お知らせを削除する", notice_path(notice.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

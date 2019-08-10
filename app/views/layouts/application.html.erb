@@ -16,16 +16,22 @@
   <body>
     <header class="drawer drawer--right">
       <div class="container-fluid">
-        <h1 class="header-title">&#9834private music school 「comodo」&#9834</h1>
+        <h1 class="header-title">&#9834Private Music School 「comodo」&#9834</h1>
         <button type="button" class="drawer-toggle drawer-hamburger" >
           <span class="sr-only">toggle navigation</span>
           <span class="drawer-hamburger-icon"></span>
         </button>
         <nav class="drawer-nav" style="background-color: rgba(0,0,0,0.3)">
           <ul class="drawer-manu">
+            <% if admin_signed_in? %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-header" %>
+            <% elsif user_signed_in? %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-header" %>
+            <% else %>
               <%= link_to "トップページ",root_path, class: "btn btn-header"  %>
               <%= link_to "会員登録",new_user_registration_path, class: "btn btn-header" %>
               <%= link_to "ログイン",new_user_session_path, class: "btn btn-header" %>
+            <% end %>
           </ul>
         </nav>
       </div>
@@ -33,6 +39,6 @@
     <%= yield %>
   </body>
   <footer>
-    <h1 class="footer-title">&#9834private music school 「comodo」&#9834</h1>
+    <h2 class="footer-title">&#9834Private Music School 「comodo」&#9834</h2>
   </footer>
 </html>

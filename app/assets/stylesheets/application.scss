@@ -22,10 +22,16 @@
 
  header {
  	background-color: white;
+ 	height: 70px;
+ }
+
+ footer {
+ 	height: 70px;
  }
 
  .header-title {
  	text-align: center;
+ 	line-height: 70px;
  }
 
  .btn-header {
@@ -44,6 +50,15 @@
  	color: white;
  }
 
+ .registration-title{
+ 	margin: 20px 0;
+ }
+
+ .registration-text {
+ 	margin-bottom: 20px;
+ }
+
 .footer-title {
 	text-align: right;
+	line-height: 70px;
 }

@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;">お知らせの入力ページです</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<%= form_for @notice do |f| %>
+					<div class="notice_form">
+						<div class="form-group">
+							<%= f.label :お知らせタイトル %>
+	     					<%= f.text_area :notice_title, class: "form-control", rows: 1 %>
+	     				</div>
+	     				<div class="form-group">
+	     					<%= f.label :お知らせ本文 %>
+	     					<%= f.text_area :notice_text, class: "form-control",cols: 110, rows: 15 %>
+	     				</div>
+	     				<%= f.submit "お知らせを投稿する", class: "form-button" %>
+	     			</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

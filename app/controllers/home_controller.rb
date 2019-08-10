@@ -7,4 +7,8 @@ class HomeController < ApplicationController
 	def about
 
 	end
+
+	def admin_top
+
+	end
 end

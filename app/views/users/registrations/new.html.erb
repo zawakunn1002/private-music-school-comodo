@@ -1,0 +1,75 @@
+<div class="container-fiuid" style="background-color: rgba(255,255,0,0.3);">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <h2 class="registration-title">会員登録画面です</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <div class="registration-text">
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+              <%= f.fields_for :user_children do |child| %>
+                <div class="field">
+                  <%= child.label :姓（漢字） %><br>
+                  <%= child.text_field :name_kanji_sei %>
+                </div>
+
+                <div class="field">
+                  <%= child.label :名（漢字） %><br>
+                  <%= child.text_field :name_kanji_mei %>
+                </div>
+
+                <div class="field">
+                  <%= child.label :セイ（カナ） %><br>
+                  <%= child.text_field :name_kana_sei %>
+                </div>
+
+                <div class="field">
+                  <%= child.label :メイ（カナ） %><br>
+                  <%= child.text_field :name_kana_mei %>
+                </div>
+              <% end %>
+
+            <div class="field">
+              <%= f.label :携帯電話番号 %><br />
+              <%= f.text_field :cellphone_number %>
+            </div>
+
+            <div class="field">
+              <%= f.label :ご自宅電話番号 %><br />
+              <%= f.text_field :homephone_number %>
+              <p>*ご自宅電話番号は<br>空欄でも登録できます</p>
+            </div>
+
+            <div class="field">
+              <%= f.label :Eメールアドレス %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :パスワード確認 %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "会員登録する" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
