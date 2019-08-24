@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;"><%= @user.user_children[0].name_kana_sei %>さんこんにちは！</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-12">
+			<div class="d-flex justify-content-center">
+				<%= link_to "プロフィールを編集する", edit_user_path(current_user), class: "btn btn-primary" %>
+			</div>
+		</div>
+		<div class="col-lg-6 col-12">
+			<div class="d-flex justify-content-center">
+				<%= link_to "お知らせ一覧を確認する", notices_path, class: "btn btn-success" %>
+			</div>
+		</div>
+	</div>
+</div>

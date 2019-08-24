@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
 
+	before_action :configure_permitted_parameters, if: :devise_controller?
+
 	def after_sign_in_path_for(resourse)
 		case resourse
 
 		when User
-		notices_path
+		user_path(current_user)
 
 	    when Admin
 	    admins_path
@@ -19,7 +21,7 @@ class ApplicationController < ActionController::Base
 	protected
     def configure_permitted_parameters
     	if params['controller'] == 'users/registrations'
-    	devise_parameter_sanitizer.permit(:sign_up, keys: [:cellphone_number, user_children_attributes:[:name_kanji_sei, :name_kanji_mei, :name_kana_sei, :name_kana_mei]])
+    	devise_parameter_sanitizer.permit(:sign_up, keys:[:cellphone_number, user_children_attributes:[:name_kanji_sei, :name_kanji_mei, :name_kana_sei, :name_kana_mei]])
 
         elsif params['controller'] == 'admins/registrations'
     	devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

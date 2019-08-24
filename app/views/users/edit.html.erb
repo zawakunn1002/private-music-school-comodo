@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;">プロフィール編集画面です</h2>
+			</div>
+		</div>
+	</div>
+	<% if user_signed_in? %>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<p>ご自宅の電話番号はこちらから登録できます。<br>またメールアドレスや携帯の電話番号が変わった場合、<br>お手数ですがこちらの画面から変更をお願いいたします。</p>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<% if user_signed_in? %>
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-center">
+					<%= form_for @user do |f| %>
+							<%= f.fields_for :user_children do |child| %>
+				                <div class="field">
+				                  <%= child.label :姓（漢字） %><br>
+				                  <%= child.text_field :name_kanji_sei %>
+				                </div>
+
+				                <div class="field">
+				                  <%= child.label :名（漢字） %><br>
+				                  <%= child.text_field :name_kanji_mei %>
+				                </div>
+
+				                <div class="field">
+				                  <%= child.label :セイ（カナ） %><br>
+				                  <%= child.text_field :name_kana_sei %>
+				                </div>
+
+				                <div class="field">
+				                  <%= child.label :メイ（カナ） %><br>
+				                  <%= child.text_field :name_kana_mei %>
+				                </div>
+				             <% end %>
+			            <div class="field">
+			              <%= f.label :携帯電話番号 %><br />
+			              <%= f.text_field :cellphone_number %>
+			            </div>
+
+			            <div class="field">
+			              <%= f.label :ご自宅電話番号 %><br />
+			              <%= f.text_field :homephone_number %>
+			            </div>
+
+			            <div class="field">
+			              <%= f.label :Eメールアドレス %><br />
+			              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			            </div>
+
+			            <div class="actions" style="margin: 20px 0;">
+	              			<%= f.submit "プロフィールを更新する" %>
+	            		</div>
+	          		<% end %>
+	          	</div>
+	        </div>
+	    </div>
+	<% end %>
+</div>

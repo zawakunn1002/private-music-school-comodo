@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;">生徒さんの一覧画面です。</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<div class="form-group">
+					<%= search_form_for @search do |f| %>
+			        	<!-- ユーザーの検索欄 -->
+			       		<%= f.label :電話番号検索 %><br>
+			        	<%= f.text_field :cellphone_number_cont, class: "form-control" %><br>
+			        	<div class="actions"><%= f.submit "検索" %></div>
+			        <% end %>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-10 offset-lg-1 col-12">
+			<div class="d-flex justify-content-center">
+				<table class="table table-hover table-inverse">
+					<thead>
+						<tr>
+							<th>生徒さん氏名</th>
+							<th>メールアドレス</th>
+							<th>通学曜日</th>
+							<th>ご自宅電話番号</th>
+							<th>携帯電話番号</th>
+							<th></th>
+							<th></th>
+					    </tr>
+					</thead>
+					<tbody>
+						<% @result.each do |user| %>
+								<tr>
+									<td><%= user.user_children[0].name_kana_sei %><%= user.user_children[0].name_kana_mei %></td>
+									<td><%= user.email %></td>
+									<td><%= user.day %></td>
+									<td><%= user.homephone_number %></td>
+									<td><%= user.cellphone_number %></td>
+									<td><%= link_to "曜日編集", edit_admins_user_path(user.id)%>
+									<td><%= link_to "削除", admins_user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
+								</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<%= paginate @users_result, :window => 2 %>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<%= link_to "講師画面へ戻る", admins_path, class: "btn btn-primary" %>
+			</div>
+		</div>
+	</div>
+</div>

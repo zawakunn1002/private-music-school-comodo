@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
     <!-- drawer.jsの導入 -->
@@ -24,8 +25,11 @@
         <nav class="drawer-nav" style="background-color: rgba(0,0,0,0.3)">
           <ul class="drawer-manu">
             <% if admin_signed_in? %>
+              <%= link_to "講師トップページ", admins_path, class: "btn btn-header" %>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-header" %>
             <% elsif user_signed_in? %>
+              <%= link_to "お知らせ一覧", notices_path, class: "btn btn-header" %>
+              <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-header" %>
             <% else %>
               <%= link_to "トップページ",root_path, class: "btn btn-header"  %>

@@ -1,1 +1,39 @@
-<p>aaa</p>
+<div class="conrainer-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;"><%= @notice.notice_title %></h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 offset-lg-2 col-12">
+			<div class="d-flex justify-content-center">
+				<p style="margin: 20px 0;"><%= @notice.notice_text %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<div id="favorite_buttons_<%= @notice.id %>">
+		        	<%= render partial: 'favorite', locals: { notice: @notice} %>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<p>＊お知らせを確認した場合は上の青いボタンを押してください。<br>＊青いボタンを押すと星マークが現れます</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<%= link_to "お知らせ一覧ページへ戻る", notices_path, class: "btn btn-info"  %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -21,7 +21,7 @@
 		</div>
 		<div class="col-4">
 			<div class="d-flex justify-content-center">
-				<%= link_to "生徒さんの一覧を確認する", users_path, class: "btn btn-success" %>
+				<%= link_to "生徒さんの一覧を確認する", admins_users_path, class: "btn btn-success" %>
 			</div>
 		</div>
 		<div class="col-4">
@@ -56,10 +56,10 @@
 					<tbody>
 						<% @notices.each do |notice| %>
 							<tr>
-								<td><%= link_to notice.notice_title, notice_path(notice.id) %></td>
+								<td><%= link_to notice.notice_title, admins_notice_path(notice.id) %></td>
 								<td><%= notice.created_at.strftime("%Y") %>年<%= notice.created_at.strftime("%m") %>月<%= notice.created_at.strftime("%d") %>日</td>
-								<td><%= link_to "お知らせの内容を編集する", edit_notice_path(notice.id) %></td>
-								<td><%= link_to "お知らせを削除する", notice_path(notice.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
+								<td><%= link_to "このお知らせの内容を編集する", edit_notice_path(notice.id) %></td>
+								<td><%= link_to "このお知らせを削除する", notice_path(notice.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
 							</tr>
 						<% end %>
 					</tbody>
@@ -67,4 +67,5 @@
 			</div>
 		</div>
 	</div>
+	<%= paginate @notices, :window => 2 %>
 </div>

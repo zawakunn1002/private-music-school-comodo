@@ -1,0 +1,62 @@
+<div class="conrainer-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h2 style="margin: 20px 0;"><%= @notice.notice_title %></h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 offset-lg-2 col-12">
+			<div class="d-flex justify-content-center">
+				<p style="margin: 20px 0;"><%= @notice.notice_text %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h4>お知らせ確認者一覧(お知らせ確認数：<%= @notice.favorites.count %>)</h4>
+		    </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-8 offset-2">
+			<div class="d-flex justify-cottent-center">
+				<table class="table table-hover table-inverse">
+					<thead>
+						<tr>
+							<th>生徒さん氏名</th>
+							<th>通学曜日</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <% @favorite.each do |user| %>
+					    	<tr>
+					    		<th><%= user.user.user_children[0].name_kana_sei %><%= user.user.user_children[0].name_kana_mei %></th>
+					    		<th><%= user.user.day %></th>
+					    	</tr>
+					    <% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-8 offset-2">
+			<%= paginate @favorite, :window => 1 %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div class="d-flex justify-content-center">
+				<%= link_to "講師ページへ戻る", admins_path, class: "btn btn-info"  %>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="d-flex justify-content-center">
+				<%= link_to "このお知らせを編集する", edit_notice_path(@notice.id), class: "btn btn-info" %>
+			</div>
+		</div>
+	</div>
+</div>

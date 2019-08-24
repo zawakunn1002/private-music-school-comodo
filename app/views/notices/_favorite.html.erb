@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+<!-- ログインしているユーザーがお気に入りしたかどうかで分岐 -->
+    <% if notice.favorited_by?(current_user) %>
+        <p class="btn btn-primary">お知らせ確認済み
+            <i class="fa fa-star" aria-hidden="true" style="color: rgb(255,255,0);"></i>
+        </p>
+    <% else %>
+        <p><%=link_to "お知らせを確認した場合はここを押してください", notice_favorites_path(notice.id), method: :post, remote: true, class: "btn btn-primary" %>
+        	<i class="fa fa-star-o" aria-hidden="true"></i>
+        </p>
+    <% end %>
+<% end %>
+

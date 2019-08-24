@@ -23,6 +23,12 @@ Rails.application.routes.draw do
 
   resources :admins, only: [:index, :edit, :update]
 
+  namespace :admins do
+    resources :users
+    resources :notices
+
+  end
+
 
   #stories_controller,favorites_controller.story_comments_controllerのルーティング
   resources :notices do

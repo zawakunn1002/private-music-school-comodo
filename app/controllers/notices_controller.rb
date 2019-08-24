@@ -17,10 +17,13 @@ class NoticesController < ApplicationController
 	end
 
 	def index
+		@notices = Notice.page(params[:page]).reverse_order.per(10)
 
 	end
 
 	def show
+		@notice = Notice.find(params[:id])
+		@admin = 1
 
 	end
 
@@ -32,7 +35,11 @@ class NoticesController < ApplicationController
 	def update
 		@notice = Notice.find(params[:id])
 		if @notice.update(notice_params)
+		   if user_signed_in?
+		   redirect_to user_path(current_user)
+		   else
 		   redirect_to admins_path
+		   end
 		else
 		   render "edit"
 		end
